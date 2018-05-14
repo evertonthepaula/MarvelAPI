@@ -151,14 +151,14 @@ export default (function(){
         current.dataset.page = prevRange;
         current.innerText = prevText;
 
-        prevRange = prevRange + params.maxNavs;
+        prevRange = prevRange + params.maxPerPage;
         prevText++;
       });
 
       pagination.next.dataset.text = prevText;
       pagination.next.dataset.next = prevRange;
 
-      pagination.prev.dataset.prev = pagination.itens[0].dataset.page - (params.maxNavs * params.maxNavs);
+      pagination.prev.dataset.prev = pagination.itens[0].dataset.page - (params.maxPerPage * params.maxNavs);
       pagination.prev.dataset.text = pagination.itens[0].innerText - params.maxNavs;      
 
       let offset = pagination.list.querySelector('.active').dataset.page;
