@@ -1,0 +1,27 @@
+.searching{
+  position: relative;
+
+  &-img{
+    display: block;
+    margin: 0 auto;
+    
+    opacity:0;
+    animation-duration: 500ms;
+    animation-delay: 0ms;
+    animation-name: fade;
+    animation-fill-mode: forwards;
+  }
+  &-text{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+  }
+
+}
+
+@keyframes fade{
+  to{
+    opacity:1;
+  }
+}

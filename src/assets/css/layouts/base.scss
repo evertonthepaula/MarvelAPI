@@ -1,0 +1,140 @@
+.app{
+	width:100%;
+	height: auto;
+    min-height: 100%;
+	padding: 20px 0;
+	position:relative;
+	box-sizing:border-box;
+}
+
+.container{
+	width:100%;
+	padding:0 42px;
+	box-sizing:border-box;
+}
+
+.header{
+	display: flex;
+	position: relative;
+	margin-bottom:34px;
+	justify-content:space-between;
+}
+
+.head-title b{
+	position:relative;
+	margin-bottom: 5px;
+    display: inline-block;
+
+	&::after{
+		content: "";
+	    width: 54px;
+	    height: 4px;
+	    display: block;
+	    left: 0;
+	    bottom: -5px;
+	    position: absolute;
+	    background: $color-first;
+	}
+}
+.footer{
+	display: block;
+	width:100%;
+	height:12px;
+	margin-top:16px;
+	position:absolute;
+	bottom:0;
+	background-color: $color-first;
+}
+
+.link{
+    display: inline-block;
+    padding-bottom: 10px;
+    margin: 0 1em 0 0;
+	position: relative;
+    font-size: $font-size-third;
+    color: $font-color-first;
+    text-transform: uppercase;
+	font-weight: $font-black;
+	cursor: pointer;
+
+	&::after{
+		content:'';
+		display: block;
+		width:0;
+		height:20px;
+		background: url('/src/assets/img/the-flash-icon.png') no-repeat right center, linear-gradient(to bottom, #ffde08, transparent 5%, #fff 29%, #ffde08 38%, transparent 50%);
+		background-size: contain;
+		transition: width 500ms ease-in;
+	}
+
+	&:hover::after{
+		width:100%;
+	}
+}
+
+.section_head{
+	display: flex;
+	align-items: center;
+	min-height: 37px;
+    margin:0 0 20px;
+	padding: 8px 25px;
+	font-size: $font-size-third;
+	color: $font-color-third;
+	font-weight: $font-regular;
+	background-color:$color-first;
+	box-sizing: border-box;
+}
+
+.modal{
+	display: block;
+	position: fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 100;
+	
+	&.left{
+		transform: translateX(-100%);
+		
+		&.active{
+			transition: transform 500ms ease 200ms;
+			transform: translateX(0);
+		}
+	}
+	&::before{
+	    content: 'X';
+	    display: block;
+		width: 40px;
+    	height: 40px;
+        padding: 10px 0 0;
+	    margin: 0 0 0 auto;
+	    background: $color-first;
+	    text-align: center;
+	    color: $font-color-third;
+	    font-size: $font-size-first;
+	    font-weight: $font-black;
+	    cursor: pointer;
+	}
+}
+
+
+@media (max-width: 360px){
+	.app{
+		padding:12px 0;
+	}
+	.container{
+		padding:0;
+	}
+	.header{
+		justify-content:center;	
+		
+		.head-title{
+			font-size: $font-size-third;
+		}
+		.dev-name{
+			display:none;
+		}
+	}
+}

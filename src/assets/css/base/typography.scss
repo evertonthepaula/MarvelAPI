@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,900');
+
+html {
+	font-family: $font-family;
+	font-size: 62.5%;
+}
+
+p
+,.text {
+	margin:0;
+	font-size: $font-size-second;
+	font-weight: $font-regular;
+	color: $font-color-second;
+	line-height:1;
+}
+
+.title {
+	margin:0;
+	font-size: $font-size-first;
+	font-weight: $font-light;
+	color: $font-color-first;
+	
+	b{
+		font-weight:$font-black;
+	}
+}
+
+.table-title {
+	font-size: $font-size-third;
+	font-weight: $font-regular;
+	color: $font-color-third;
+}
+
+label,
+.label-text {
+	font-size: $font-size-third;
+	font-weight: $font-regular;
+	color: $font-color-first;	
+}
