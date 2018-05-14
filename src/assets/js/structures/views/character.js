@@ -22,31 +22,30 @@ export default (function(){
 
   function htmlView()
   {
-    console.log(Characters.sources);
     return Characters.sources.map((character) => `
-        <a onclick="window.history.back();" class="link">VOLTAR</a>    
+      <a onclick="window.history.back();" class="link">VOLTAR</a>    
 
-        <section id="${character.id}" class="character">
-          <div class="character-background" style="background-image:url(${character.thumbnail.path}.${character.thumbnail.extension})"></div>
+      <section id="${character.id}" class="character">
+        <div class="character-background" style="background-image:url(${character.thumbnail.path}.${character.thumbnail.extension})"></div>
 
-          <div class="character-info">
-            <img src="${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}" alt="${character.name}" height="450px" width="300" class="character-info-img"/>
-            
-            <h2 class="title">${character.name}</h2>
-            
-            <p class="character-info-desc">${addDescription(character)}</p>
-            
-            ${addWikis(character)}
-          </div>
+        <div class="character-info">
+          <img src="${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}" alt="${character.name}" height="450px" width="300" class="character-info-img"/>
+          
+          <h2 class="title">${character.name}</h2>
+          
+          <p class="character-info-desc">${addDescription(character)}</p>
+          
+          ${addWikis(character)}
+        </div>
 
-          <div class="character-collections">
-            ${addComics(character)}
-            ${addEvents(character)}
-            ${addSeries(character)}
-            ${addStories(character)}
-          </div>
-        </section>
-      `);
+        <div class="character-collections">
+          ${addComics(character)}
+          ${addEvents(character)}
+          ${addSeries(character)}
+          ${addStories(character)}
+        </div>
+      </section>
+    `);
   }
 
   function addDescription(character)
@@ -143,8 +142,6 @@ export default (function(){
       elem.addEventListener('click', (e) => {
         let resource = elem.dataset.collectionDetails;
         let id = regexID(e.target.dataset.comicUri);
-
-        console.log(Details[resource]);
 
         Details[resource].get(id)
           .then(() => {
