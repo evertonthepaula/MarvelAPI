@@ -122,7 +122,7 @@ export default (function(){
         current.dataset.page = nextRange;
         current.innerText = nextText;
 
-        nextRange = nextRange + params.maxNavs;
+        nextRange = nextRange + params.maxPerPage;
         nextText++;
       });
 
