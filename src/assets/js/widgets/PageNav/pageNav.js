@@ -89,6 +89,10 @@ export default (function(){
     pagination.list.addEventListener('click', function (e){
       e.preventDefault();
 
+      if(!e.target.classList.contains('page_nav-item')){
+        return false;
+      }
+      
       let offset = e.target.dataset.page;
 
       pagination.list.querySelector('.active').classList.remove('active');
