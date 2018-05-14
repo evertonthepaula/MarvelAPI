@@ -6,7 +6,7 @@ export default (function(){
     maxPerPage: 0,
     maxNavs: 0,
     pagesTotal(){
-      return Math.ceil( params.total / params.maxNavs);
+      return Math.ceil( params.total / params.maxPerPage);
     },
     nextCallback(){},
     prevCallback(){},
@@ -27,7 +27,7 @@ export default (function(){
           <ol id="paginationList" class="page_nav-list" data-final="${params.pagesTotal()}">
             ${navIntens()}
           </ol>
-        <span id="paginationNext" class="page_nav-next" data-next="12" data-text="7"></span>
+        <span id="paginationNext" class="page_nav-next" data-next="60" data-text="7"></span>
       </div>
     `;
   }
@@ -92,7 +92,7 @@ export default (function(){
       if(!e.target.classList.contains('page_nav-item')){
         return false;
       }
-      
+
       let offset = e.target.dataset.page;
 
       pagination.list.querySelector('.active').classList.remove('active');
