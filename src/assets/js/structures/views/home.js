@@ -50,6 +50,10 @@ export default (function(){
 
   function findCharacters(name)
   {
+    if(!name){
+      return bind();
+    }
+
     document.getElementById('paginationBox').style.display = 'none';
    
     Characters
