@@ -5,9 +5,6 @@ export default (function(){
     total: 0,
     maxPerPage: 0,
     maxNavs: 0,
-    pagesTotal(){
-      return Math.ceil( params.total / params.maxPerPage);
-    },
     nextCallback(){},
     prevCallback(){},
     pageCallback(){},
@@ -24,7 +21,7 @@ export default (function(){
     return `
       <div class="page_nav" id="paginationBox">
         <span id="paginationPrev" class="page_nav-prev" data-prev="-1" data-text="-1"></span>  
-          <ol id="paginationList" class="page_nav-list" data-final="${params.pagesTotal()}">
+          <ol id="paginationList" class="page_nav-list">
             ${navIntens()}
           </ol>
         <span id="paginationNext" class="page_nav-next" data-next="60" data-text="7"></span>
@@ -76,7 +73,6 @@ export default (function(){
       prev : paginationBox.querySelector('#paginationPrev'),
       list : paginationBox.querySelector('#paginationList'),
       itens : paginationBox.querySelector('#paginationList').querySelectorAll('li'),
-      totalpages : paginationBox.querySelector('#paginationList').dataset.final,
     };  
 
     pageClick();
@@ -111,7 +107,7 @@ export default (function(){
       let nextRange = parseInt(this.dataset.next);
       let nextText = this.dataset.text;
 
-      if(nextRange >= pagination.totalpages){
+      if(nextRange >= params.total){
         return false;
       }
 
