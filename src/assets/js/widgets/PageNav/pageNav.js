@@ -38,7 +38,7 @@ export default (function(){
 
     for( let x = 0; x < params.maxNavs;){
       page_nav +=  `
-        <li class="page_nav-item ${(x === 0)? 'active':''}" data-page="${x * params.maxNavs}">${++x}</li>
+        <li class="page_nav-item ${(x === 0)? 'active':''}" data-page="${x * params.maxPerPage}">${++x}</li>
       `;
     }
 
