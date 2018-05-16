@@ -21,42 +21,44 @@ module.exports = {
 	
 	module: {
 		rules: [
-		{
-			enforce: "pre",
-			test: /\.js$/,
-			exclude: /(node_modules|bower_components)/,
-			loader: "eslint-loader",
-		},
-		{
-			test: /\.js$/,
-			exclude: /(node_modules|bower_components)/,
-			use: {
-				loader: 'babel-loader',
-				options: {	
-					presets: ['env']
+			{
+				enforce: "pre",
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: "eslint-loader",
+			},
+			{
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {	
+						presets: ['env']
+					}
 				}
-			}
-		},
-		{
-            test: /\.scss$/,
-            use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "sass-loader" // compiles Sass to CSS
-            }]
-        },
-        {
-    		test: /\.css$/,
-    		use: [ 'style-loader', 'css-loader' ]
-      	},
-		{
-			test: /\.(png|svg|jpg|gif)$/,
-			use: [
-				'file-loader'
-			]
-		},
+			},
+			{
+		        test: /\.scss$/,
+		        use: [{
+		            loader: "style-loader" // creates style nodes from JS strings
+		        }, {
+		            loader: "css-loader" // translates CSS into CommonJS
+		        }, {
+		            loader: "sass-loader" // compiles Sass to CSS
+		        }]
+		    },
+		    {
+				test: /\.css$/,
+				use: [ 'style-loader', 'css-loader' ]
+		  	},
+			{
+				test: /\.(png|svg|jpg|gif)$/,
+				use: [
+					'file-loader'
+				]
+			},
+			{ test: /\.jpg$/, use: [ "file-loader" ] },
+      		{ test: /\.png$/, use: [ "url-loader?mimetype=image/png" ] }
 		]
 	}
 }
