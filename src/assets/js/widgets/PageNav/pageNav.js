@@ -1,10 +1,15 @@
+import sessionStorage from '../../storages/session';
+
 export default (function(){
 
   let pagination;
-  const params = {
+  const config = {
     total: 0,
     maxPerPage: 0,
     maxNavs: 0,
+    maxPages(){
+      return config.total/config.maxPerPage;
+    },
     nextCallback(){},
     prevCallback(){},
     pageCallback(){},
@@ -18,30 +23,39 @@ export default (function(){
 
   function template()
   {
+    let current;
+    let init;
+    let end;
+
+    (!(current = sessionStorage.getStorage('currentPage')))? current = 1 : current = parseInt(current);
+    (!(init = sessionStorage.getStorage('paginationInit')))? init = 1 : init = parseInt(init);
+
+    end = init + config.maxNavs;
+  
     return `
       <div class="page_nav" id="paginationBox">
-        <span id="paginationPrev" class="page_nav-prev" data-prev="-1" data-text="-1"></span>  
+        <span id="paginationPrev" class="page_nav-prev" data-prev="${init - config.maxNavs}"></span>  
           <ol id="paginationList" class="page_nav-list">
-            ${navIntens()}
+            ${navIntens(current,init,end)}
           </ol>
-        <span id="paginationNext" class="page_nav-next" data-next="60" data-text="7"></span>
+        <span id="paginationNext" class="page_nav-next" data-next="${end}"></span>
       </div>
     `;
   }
 
-  function navIntens()
+  function navIntens(current,init,end)
   { 
     let page_nav = '';
 
-    for( let x = 0; x < params.maxNavs;){
+    for(let x = init; x < end; x++){
       page_nav +=  `
-        <li class="page_nav-item ${(x === 0)? 'active':''}" data-page="${x * params.maxPerPage}">${++x}</li>
+        <li class="page_nav-item ${(x === current)? 'active':''}">${x}</li>
       `;
     }
 
     return page_nav;
   }
-  
+
   function eventsHandler()
   {
     const target = document.querySelector('#mainContent');
@@ -85,16 +99,21 @@ export default (function(){
     pagination.list.addEventListener('click', function (e){
       e.preventDefault();
 
+      let session = {};
+
       if(!e.target.classList.contains('page_nav-item')){
         return false;
       }
 
-      let offset = e.target.dataset.page;
-
       pagination.list.querySelector('.active').classList.remove('active');
       e.target.classList.add('active');
+
+      session.currentPage = e.target.innerText;
+      session.offset = offsetcalc(session.currentPage);
       
-      params.pageCallback(params.maxPerPage, offset);
+      storages(session);
+
+      config.pageCallback(config.maxPerPage, session.offset);
 
     }, false);
   }
@@ -104,30 +123,28 @@ export default (function(){
     pagination.next.addEventListener('click', function(e){
       e.preventDefault();
 
-      let nextRange = parseInt(this.dataset.next);
-      let nextText = this.dataset.text;
+      let session = {};
+      let nextText = this.dataset.next;
 
-      if(nextRange >= params.total){
+      if(nextText >= config.maxPages()){
         return false;
       }
 
-      pagination.prev.dataset.prev = pagination.itens[0].dataset.page;
-      pagination.prev.dataset.text = pagination.itens[0].innerText;
+      session.paginationInit = nextText;
+      pagination.prev.dataset.prev = pagination.itens[0].innerText;
 
       pagination.itens.forEach(function(current,index){
-        current.dataset.page = nextRange;
-        current.innerText = nextText;
-
-        nextRange = nextRange + params.maxPerPage;
-        nextText++;
+        current.innerText = nextText++;
       });
 
-      this.dataset.text = nextText;
-      this.dataset.next = nextRange;
+      this.dataset.next = nextText;
       
-      let offset = pagination.list.querySelector('.active').dataset.page;
-      
-      params.nextCallback(params.maxPerPage, offset);
+      session.currentPage = pagination.list.querySelector('.active').innerText;
+      session.offset = offsetcalc(session.currentPage);
+
+      storages(session);
+
+      config.nextCallback(config.maxPerPage, session.offset);
 
     }, false);
   }
@@ -135,38 +152,53 @@ export default (function(){
   function prevClick()
   {
     pagination.prev.addEventListener('click', function(e){
-
-      let prevRange = parseInt(pagination.prev.dataset.prev);
-      let prevText = pagination.prev.dataset.text;
+      let session = {};
+      let prevText = pagination.prev.dataset.prev;
 
       if(prevText < 0){
         return false;
       }
 
       pagination.itens.forEach(function(current,index){
-        current.dataset.page = prevRange;
-        current.innerText = prevText;
-
-        prevRange = prevRange + params.maxPerPage;
-        prevText++;
+        current.innerText = prevText++;
       });
 
-      pagination.next.dataset.text = prevText;
-      pagination.next.dataset.next = prevRange;
-
-      pagination.prev.dataset.prev = pagination.itens[0].dataset.page - (params.maxPerPage * params.maxNavs);
-      pagination.prev.dataset.text = pagination.itens[0].innerText - params.maxNavs;      
-
-      let offset = pagination.list.querySelector('.active').dataset.page;
+      pagination.next.dataset.next = prevText;
+      pagination.prev.dataset.prev = pagination.itens[0].innerText - config.maxNavs;      
       
-      params.prevCallback(params.maxPerPage, offset);
+      session.paginationInit = pagination.itens[0].innerText;
+      session.currentPage =  pagination.list.querySelector('.active').innerText;
+      session.offset = offsetcalc(session.currentPage);
+
+      storages(session);
+
+      config.prevCallback(config.maxPerPage, session.offset);
     
     }, false);
   }
 
+  function offsetcalc(page)
+  {
+    if(page <= 0){
+      return 0;
+    }
+
+    return --page * config.maxPerPage;
+  }
+
+  function storages(session = {})
+  {
+    sessionStorage.setStorage('currentPage', session.currentPage);
+    sessionStorage.setStorage('currentOffset', session.offset);
+    
+    if (session.paginationInit) {
+      sessionStorage.setStorage('paginationInit', session.paginationInit);
+    }
+  }
+
   return {
     create: bind,
-    params,
+    config,
   };
 
 })();

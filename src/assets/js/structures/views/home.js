@@ -3,6 +3,7 @@ import searchBox from '../../widgets/searchBox/searchBox';
 import charactersTable from '../templates/charactersTable';
 import pageNav from '../../widgets/PageNav/pageNav';
 import searching from '../templates/searching';
+import sessionStorage from '../../storages/session';
 
 export default (function(){
   const appContainer = document.getElementById('mainContent');
@@ -12,17 +13,21 @@ export default (function(){
   function bind()
   {
     appContainer.innerHTML = searching.create();
-
-    Characters
-      .load(charactersLimit, 0)
-      .then(() => {
-        template();
-        setCharactersContainer();
-      });
+    template();
   }
 
-  function template(){
-    appContainer.innerHTML = htmlView();
+  function template()
+  {
+    let offset;
+    
+    (!(offset = sessionStorage.getStorage('currentOffset')))? offset = 0 : offset;
+
+    Characters
+      .load(charactersLimit, offset)
+      .then(() => {
+        appContainer.innerHTML = htmlView();
+        setCharactersContainer();
+      });
   }
 
   function htmlView()
@@ -44,7 +49,7 @@ export default (function(){
 
   function setSearchBox()
   {
-    searchBox.params.inputCallback = findCharacters;
+    searchBox.config.inputCallback = findCharacters;
     return searchBox.create();
   }
 
@@ -70,13 +75,13 @@ export default (function(){
 
   function setPageNav(total)
   {
-    pageNav.params.total = total;
-    pageNav.params.maxNavs =  (window.innerWidth > 360)? 6 : 3;
-    pageNav.params.maxPerPage = charactersLimit;
+    pageNav.config.total = total;
+    pageNav.config.maxNavs =  (window.innerWidth > 360)? 6 : 3;
+    pageNav.config.maxPerPage = charactersLimit;
 
-    pageNav.params.nextCallback = loadCharacters;
-    pageNav.params.prevCallback = loadCharacters;
-    pageNav.params.pageCallback = loadCharacters;
+    pageNav.config.nextCallback = loadCharacters;
+    pageNav.config.prevCallback = loadCharacters;
+    pageNav.config.pageCallback = loadCharacters;
 
     return pageNav.create();
   }
