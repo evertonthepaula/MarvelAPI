@@ -1,6 +1,6 @@
 function view(name, params = {} )
 {
-  let view = require(`../../structures/views/${name}`).default;
+  let view = require(`../structures/views/${name}`).default;
   view.create(params);
 }
 

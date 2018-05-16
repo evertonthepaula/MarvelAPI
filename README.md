@@ -10,7 +10,10 @@ Why not?
 
 ### Libs
 
-- [crossroads + hasher](http://millermedeiros.github.io/crossroads.js/) 
+- webpack
+- [crossroads + hasher](http://millermedeiros.github.io/crossroads.js/)
+- [Axios](https://github.com/axios/axios)
+- [vanilla-js](http://vanilla-js.com/)
 
 ### References
 

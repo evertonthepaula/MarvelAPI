@@ -1,4 +1,4 @@
-import view from '../services/View/view';
+import view from '../view/view';
 const crossroads = require('crossroads');
 const hasher = require('hasher');
 
