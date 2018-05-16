@@ -1,6 +1,6 @@
 export default (function(){
   
-  const params = {
+  const config = {
     inputCallback(){},
   };
 
@@ -49,13 +49,13 @@ export default (function(){
   {
     searchBox.addEventListener('input', function (e){
       e.preventDefault();
-      params.inputCallback(e.target.value);
+      config.inputCallback(e.target.value);
     });
   }
 
   return {
     create: bind,
-    params,
+    config,
   };
 
 })();
