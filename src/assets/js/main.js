@@ -1,2 +1,2 @@
 import '../css/main.scss';
-import './routes/index.js';
+import './routes/route.js';
