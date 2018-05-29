@@ -1,19 +1,21 @@
-import view from '../view/view';
+import view from '../Core/View/view';
 const crossroads = require('crossroads');
 const hasher = require('hasher');
 
 export default (function(){
+  
+  view.middlewares(['networkMiddleware','teste','teste02', 'teste03']);
 
   crossroads.addRoute('/', () => {
-    view('home');
+    view.use('home');
   });
 
   crossroads.addRoute('/personagens/{name}/{id}', (name,id) => {
-    view('character', id);
+    view.use('character', id);
   });
 
   crossroads.addRoute(':rest*:', () => {
-    view('404');
+    view.use('404');
   }, -Infinity);
 
   //setup hasher

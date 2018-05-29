@@ -38,7 +38,7 @@
     "dotenv-webpack": "^1.5.5",
     "hasher": "^1.2.0",
     "normalize.css": "^8.0.0",
-    "npm": "^5.8.0",
+    "npm": "^5.10.0",
     "ts-md5": "^1.2.4"
   }
 }
