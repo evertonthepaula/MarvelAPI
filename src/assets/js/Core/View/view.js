@@ -7,20 +7,24 @@ export default (function(){
     arr.forEach((name) => middleware.set(name));
   }
 
-  function loadView(name, params = {} )
+  function useView(name, params = {} )
   {
     if (!middleware.test()) {
       return false;
     }
 
-    let view = require(`../../structures/views/${name}`).default;
-    
-    view.create(params);
+    load(name,params);
+  }
+
+  function load(name, params = {})
+  {
+    return require(`../../structures/views/${name}`).default.create(params);
   }
 
   return {
     middlewares: setMidlewares,
-    use: loadView,
+    use: useView,
+    load: load,
   };
 
 })();
