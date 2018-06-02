@@ -1,7 +1,13 @@
+import view from '../../Core/View/view';
+
 export default (function(){
   
-  console.log('networkMiddleware.js');
+  if(navigator.onLine){
+    return true;
+  }
 
-  return true;
+  view.load('offline');
+
+  return false;
 
 });
