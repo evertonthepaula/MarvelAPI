@@ -8,6 +8,8 @@ Why not?
 - npm install
 - npm run start
 
+if you want, you can use '.env' to define your PRIVATE_KEY and PUBLIC_KEY
+
 ### Libs
 
 - webpack
@@ -19,4 +21,3 @@ Why not?
 
 - https://developer.marvel.com
 - https://speca.io/speca/marvel-public-api-v1
-
