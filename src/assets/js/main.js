@@ -1,3 +1,2 @@
-import './modules/network/web';
+import './Core/bootstrap';
 import '../css/main.scss';
-import './routes/route.js';
