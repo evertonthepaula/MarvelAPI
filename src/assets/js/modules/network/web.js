@@ -1,4 +1,4 @@
-import notifications from '../../Core/Notification/handler';
+import notifications from '../../Core/Notification/notification';
 
 export default (function(){
 
