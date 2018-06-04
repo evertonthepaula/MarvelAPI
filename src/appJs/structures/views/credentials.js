@@ -56,20 +56,21 @@ export default (function(){
   function formHandler()
   {
     const form = document.getElementById('credentialsForm');
-    var formData = new FormData(form);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const privateKey = formData.get('public-key');
-      const publicKey = formData.get('private-key');
+      let formData = new FormData(form);
+
+      const publicKey = formData.get('public-key');
+      const privateKey = formData.get('private-key');
 
       if (!(privateKey || publicKey)) {
         return false;
       }
 
+      sessionStorage.setStorage('PUBLIC_KEY', publicKey);
       sessionStorage.setStorage('PRIVATE_KEY', privateKey);
-      sessionStorage.setStorage('PUBLIC_KEY', publicKey); 
 
       location.reload();
 
