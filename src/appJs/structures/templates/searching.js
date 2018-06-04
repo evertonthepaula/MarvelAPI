@@ -1,4 +1,4 @@
-import gif from '../../../img/load.gif';
+import gif from '../../../assets/img/load.gif';
 
 export default (function(){
 

@@ -1,4 +1,4 @@
-import imgNick from '../../../img/nick-calm.jpg';
+import imgNick from '../../../assets/img/nick-calm.jpg';
 
 export default (function(){
   const appContainer = document.getElementById('mainContent');

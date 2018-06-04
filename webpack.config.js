@@ -8,7 +8,7 @@ const HWPConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-	entry: './src/assets/js/main.js',
+	entry: './src/appJs/main.js',
 
 	output:{
 		path: path.resolve(__dirname, './dist'),
