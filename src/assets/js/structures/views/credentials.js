@@ -1,4 +1,4 @@
-import sessionStorage from '../../storages/session';
+import sessionStorage from '../../Core/Storages/session';
 
 export default (function(){
   const appContainer = document.getElementById('mainContent');
