@@ -4,7 +4,7 @@ const hasher = require('hasher');
 
 export default (function(){
   
-  view.middlewares(['networkMiddleware','apiKeysMiddleware']);
+  view.middlewares(['networkMiddleware','credentialsMiddleware']);
 
   crossroads.addRoute('/', () => {
     view.use('home');

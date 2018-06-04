@@ -7,7 +7,7 @@ export default (function(){
     return true;
   }
 
-  view.load('apiKeys');
+  view.load('credentials');
 
   return false;
 });

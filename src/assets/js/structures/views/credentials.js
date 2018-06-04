@@ -21,32 +21,32 @@ export default (function(){
         <h1 class="title">VOCÊ NÃO TEM CREDENCIAIS VÁLIDAS PARA ACESSAR OS RECURSOS DA API MARVEL</h1>
           
         <br />
-        <p>Você não tem credenciais válidas para acessar os recursos da API Marvel.</p>
-        <p>Por favor preencha os campos abaixo com suas chaves para que possamos credenciar seu acesso.</p>
+        <p>
+          Você não tem credenciais válidas para acessar os recursos da API Marvel.
+          Por favor preencha os campos abaixo com suas chaves para que possamos credenciar seu acesso.
+        </p>
         <br />
-        
-        <form id="credentialsForm">
-          <label for="public-key" class="label-text">Chave Pública</label>
-          <input id="public-key" name="public-key" type="text" value="chave publica">
-
-          <label for="private-key" class="label-text">Chave Privada</label>
-          <input id="private-key" name="private-key" type="text" value="chave privada">
-        
-          <button>Validar chaves</button>
-        </form>
-        
         <p>
           <small>* Não se preocupe, suas chaves ficarão disponíveis apenas para o seu navegador atual e apenas durante seu acesso.</small>
         </p>
 
+        <form id="credentialsForm" class="form-credentials">
+          <label for="public-key" class="label-text">Chave Pública</label>
+          <input id="public-key" class="form-credentials-input" name="public-key" type="text" required title="Campo obrigatório">
+
+          <label for="private-key" class="label-text">Chave Privada</label>
+          <input id="private-key" class="form-credentials-input" name="private-key" type="text" required title="Campo obrigatório">
+        
+          <button type="submit" class="form-credentials-submit">Validar chaves</button>
+        </form>
+
         <br />
-        <p>Se você não sabe sobre o que se trata esta página, por favor acesse: <a onclick="https://developer.marvel.com/documentation/getting_started" class="link">marvel.com</a></p>
+        <p>Se você não sabe sobre o que se trata esta página, por favor acesse: <a href="https://developer.marvel.com/documentation/getting_started" target="_blank" class="link">marvel.com</a></p>
 
 
       </div>
     `;
   }
-
 
   function events()
   {
@@ -61,10 +61,6 @@ export default (function(){
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      console.log(e);
-      console.log(formData.get('private-key'));
-      console.log(formData.get('public-key'));
-
       const privateKey = formData.get('public-key');
       const publicKey = formData.get('private-key');
 
@@ -75,11 +71,10 @@ export default (function(){
       sessionStorage.setStorage('PRIVATE_KEY', privateKey);
       sessionStorage.setStorage('PUBLIC_KEY', publicKey); 
 
-      location.reload(); 
+      location.reload();
 
     });
   }
-
 
   return {
     create: bind,

@@ -20,7 +20,7 @@
 	justify-content:space-between;
 }
 
-.head-title b{
+.head-title .bold{
 	position:relative;
 	margin-bottom: 5px;
     display: inline-block;
@@ -36,6 +36,7 @@
 	    background: $color-first;
 	}
 }
+
 .footer{
 	display: block;
 	width:100%;
