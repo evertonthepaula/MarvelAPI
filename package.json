@@ -10,12 +10,14 @@
     "build": "webpack --mode development",
     "watch": "webpack --watch --mode development",
     "start": "webpack-dev-server --open --mode development",
-    "build-production": "webpack --mode production"
+    "build-production": "webpack --mode production",
+    "start-production": "webpack-dev-server --open --mode production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "copy-webpack-plugin": "^4.5.3",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",

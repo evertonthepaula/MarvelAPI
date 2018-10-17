@@ -1,11 +1,18 @@
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path'),
+	Dotenv = require('dotenv-webpack'),
+	HtmlWebpackPlugin = require('html-webpack-plugin'),
+	CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const HWPConfig = new HtmlWebpackPlugin({
-	template: path.resolve(__dirname, 'src/index.html'),
-	file: 'index.html',
-	inject: 'body',
-});
+		template: path.resolve(__dirname, 'src/index.html'),
+		file: 'index.html',
+		inject: 'body',
+	});
+
+const CWPConfig = new CopyWebpackPlugin([{
+		from: './src/assets/',
+		to: 'assets',
+	}]);
 
 module.exports = {
 	entry: './src/appJs/main.js',
@@ -15,7 +22,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 
-	plugins:[HWPConfig,new Dotenv()],
+	plugins:[HWPConfig,CWPConfig,new Dotenv()],
 
 	devtool: "source-map", 
 	
