@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
+  "description": " ",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -14,7 +14,7 @@
     "start-production": "webpack-dev-server --open --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Everton de Paula",
   "license": "ISC",
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.3",
@@ -42,5 +42,13 @@
     "normalize.css": "^8.0.0",
     "npm": "^5.10.0",
     "ts-md5": "^1.2.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evertonthepaula/MarvelAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evertonthepaula/MarvelAPI/issues"
+  },
+  "homepage": "https://github.com/evertonthepaula/MarvelAPI#readme"
 }
