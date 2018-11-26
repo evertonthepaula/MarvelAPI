@@ -14,7 +14,7 @@
     "start-production": "webpack-dev-server --open --mode production",
     "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
     "fix-styles": "prettier-stylelint --write 'src/assets/css/**/*.{css,scss}' ",
-    "fix-performance": "lighthouse http://localhost:8080/src/tests/ --output-path=./tests/lighthouse/lighthouse-results.html"
+    "fix-performance": "lighthouse http://localhost:8080 --output-path=./tests/lighthouse/lighthouse-results.html --view"
   },
   "keywords": [],
   "author": "Everton de Paula",
