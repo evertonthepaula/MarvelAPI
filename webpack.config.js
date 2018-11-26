@@ -15,7 +15,7 @@ const CWPConfig = new CopyWebpackPlugin([{
 	}]);
 
 module.exports = {
-	entry: './src/appJs/main.js',
+	entry: './src/app/main.js',
 
 	output:{
 		path: path.resolve(__dirname, './dist'),
