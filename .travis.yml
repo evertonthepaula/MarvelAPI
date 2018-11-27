@@ -4,4 +4,8 @@ node_js:
   - "lts/*"
 
 script:
-  - bash ./deploy.sh
+  - npm i --save-dev https://github.com/ebidel/lighthouse-ci
+  - npm run lh -- --pwa=60 --perf=60 --seo=60 --a11y=60 --bp=60  http://eb042655.ngrok.io/
+
+# after_success:
+#   - bash ./deploy.sh

@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "scripts": {
+    "lh": "lighthouse-ci",
     "build": "webpack --mode development",
     "watch": "webpack --watch --mode development",
     "start": "webpack-dev-server --open --mode development",
