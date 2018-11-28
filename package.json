@@ -14,6 +14,7 @@
     "build-production": "webpack --mode production",
     "start-production": "webpack-dev-server --open --mode production",
     "eslint": " ./node_modules/.bin/eslint 'src/app/**/*.{js,jsx}'",
+    "stylelint": "stylelint 'src/assets/css/**/*.{css,scss}'",
     "fix-code": "prettier-eslint --write 'src/app/**/*.{js,jsx}' ",
     "fix-styles": "prettier-stylelint --write 'src/assets/css/**/*.{css,scss}' ",
     "fix-performance": "lighthouse http://localhost:8080 --output-path=./tests/lighthouse/lighthouse-results.html --view"

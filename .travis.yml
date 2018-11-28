@@ -6,16 +6,16 @@ node_js:
 before_install:
 
 install:
-  - npm istall
-  - npm i -g eslint
-  - npm i --save-dev https://github.com/ebidel/lighthouse-ci
+  - npm install
+  # - npm i --save-dev https://github.com/ebidel/lighthouse-ci
 
 before_script:
 
 script:
   - npm run eslint
-  - bash ./travis/deploy-to-test-server.sh
-  - npm run lh -- --pwa=60 --perf=60 --seo=60 --a11y=60 --bp=60  http://eb042655.ngrok.io/
+  - npm run stylelint
+  # - bash ./travis/deploy-to-test-server.sh
+  # - npm run lh -- --pwa=60 --perf=60 --seo=60 --a11y=60 --bp=60  http://eb042655.ngrok.io/
 
 
 after_success:
@@ -23,7 +23,7 @@ after_success:
 before_deploy:
   
 deploy:
-  - bash ./travis/deploy.sh
+  # - bash ./travis/deploy.sh
 
 after_deploy:
 
