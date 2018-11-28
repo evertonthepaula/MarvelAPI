@@ -13,7 +13,8 @@
     "start": "webpack-dev-server --open --mode development",
     "build-production": "webpack --mode production",
     "start-production": "webpack-dev-server --open --mode production",
-    "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+    "eslint": " ./node_modules/.bin/eslint 'src/app/**/*.{js,jsx}'",
+    "fix-code": "prettier-eslint --write 'src/app/**/*.{js,jsx}' ",
     "fix-styles": "prettier-stylelint --write 'src/assets/css/**/*.{css,scss}' ",
     "fix-performance": "lighthouse http://localhost:8080 --output-path=./tests/lighthouse/lighthouse-results.html --view"
   },
