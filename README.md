@@ -1,17 +1,14 @@
 # Marvel API - Everton de Paula
 
-## Why?
-Why not?
+Aplicação feita em Javascript puro consumindo a API da Marvel.
 
-### How To Use? 
+Deploy do projeto feito com Travis-CI [github page](https://evertonthepaula.github.io/marvel.github.io/)
 
+### How To Use?
 - npm install
 - npm run start
 
-if you want, you can use '.env' to define your PRIVATE_KEY and PUBLIC_KEY
-
-### Project page: 
-[github page](https://evertonthepaula.github.io/marvel.github.io/)
+Você pode utilizar suas variáveis de ambiente '.env' para definir sua PRIVATE_KEY e sua PUBLIC_KEY
 
 ### Libs
 
@@ -24,3 +21,7 @@ if you want, you can use '.env' to define your PRIVATE_KEY and PUBLIC_KEY
 
 - https://developer.marvel.com
 - https://speca.io/speca/marvel-public-api-v1
+
+### Mais
+[Veja também a versão em React](https://github.com/evertonthepaula/marvelact)
+
